@@ -4,9 +4,6 @@ on:
     tags:
       - "v*"
 
-env:
-  APP_NAME: todo
-
 jobs:
   create-release:
     runs-on: ubuntu-latest
