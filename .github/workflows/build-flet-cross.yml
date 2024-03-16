@@ -4,6 +4,9 @@ on:
     tags:
       - "v*"
 
+env:
+  APP_NAME: todo
+
 jobs:
   create-release:
     runs-on: ubuntu-latest
@@ -21,14 +24,14 @@ jobs:
       matrix:
         include:
           - runs-on: ubuntu-latest
-            flet-name: myapp_linux
-            binary-name: myapp_linux.tar.gz
+            flet-name: ${{ env.APP_NAME }}_linux
+            binary-name: ${{ env.APP_NAME }}_linux.tar.gz
           - runs-on: macos-latest
-            flet-name: myapp_macos
-            binary-name: myapp_maco.tar.gz
+            flet-name: ${{ env.APP_NAME }}_macos
+            binary-name: ${{ env.APP_NAME }}_maco.tar.gz
           - runs-on: windows-latest
-            flet-name: myapp_windows
-            binary-name: myapp_windows.zip
+            flet-name: ${{ env.APP_NAME }}_windows
+            binary-name: ${{ env.APP_NAME }}_windows.zip
     runs-on: ${{ matrix.runs-on }}
     permissions:
       contents: write
@@ -36,7 +39,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: 3.10
           cache: "pip"
       - run: pip install -r requirements.txt
       - run: flet pack app.py --name ${{ matrix.flet-name }}
