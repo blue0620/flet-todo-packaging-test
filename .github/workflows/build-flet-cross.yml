@@ -24,14 +24,14 @@ jobs:
       matrix:
         include:
           - runs-on: ubuntu-latest
-            flet-name: ${{ env.APP_NAME }}_linux
-            binary-name: ${{ env.APP_NAME }}_linux.tar.gz
+            flet-name: ${{ vars.APP_NAME }}_linux
+            binary-name: ${{ vars.APP_NAME }}_linux.tar.gz
           - runs-on: macos-latest
-            flet-name: ${{ env.APP_NAME }}_macos
-            binary-name: ${{ env.APP_NAME }}_maco.tar.gz
+            flet-name: ${{ vars.APP_NAME }}_macos
+            binary-name: ${{ vars.APP_NAME }}_maco.tar.gz
           - runs-on: windows-latest
-            flet-name: ${{ env.APP_NAME }}_windows
-            binary-name: ${{ env.APP_NAME }}_windows.zip
+            flet-name: ${{ vars.APP_NAME }}_windows
+            binary-name: ${{ vars.APP_NAME }}_windows.zip
     runs-on: ${{ matrix.runs-on }}
     permissions:
       contents: write
