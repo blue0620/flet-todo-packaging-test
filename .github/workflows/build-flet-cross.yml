@@ -45,7 +45,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install libgtk-3-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+          sudo apt-get install libunwind-dev libgtk-3-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
       - run: flet build ${{ matrix.target-platform }} --output dist
       - name: "Linux/MacOS compress"
         if: runner.os != 'Windows'
