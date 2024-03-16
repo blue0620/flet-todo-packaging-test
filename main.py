@@ -11,6 +11,7 @@ from flet import (
     Tabs,
     Text,
     TextField,
+    TextThemeStyle,
     UserControl,
     colors,
     icons,
@@ -109,7 +110,10 @@ class TodoApp(UserControl):
         return Column(
             width=600,
             controls=[
-                Row([Text(value="Todos", style="headlineMedium")], alignment="center"),
+                Row(
+                    [Text(value="Todos", theme_style=TextThemeStyle.HEADLINE_MEDIUM)],
+                    alignment="center",
+                ),
                 Row(
                     controls=[
                         self.new_task,
