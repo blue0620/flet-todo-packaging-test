@@ -43,17 +43,6 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - name: Install venv
-        if: runner.os != 'Windows'
-        run: |
-          python -m venv ocrenv
-          source ocrenv/bin/activate
-      - name: Install venv(windows)
-        if: runner.os == 'Windows'
-        run: |
-          chcp 65001
-          python -m venv ocrenv
-          ocrenv\Scripts\activate.ps1
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
@@ -63,7 +52,10 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install libunwind-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
-      - run: flet build ${{ matrix.target-platform }} --output dist
+      - name: "Flet build"
+        shell: bash
+        run: |
+          flet build ${{ matrix.target-platform }} --output dist
       - name: "Linux/MacOS compress"
         if: runner.os != 'Windows'
         run: tar zcvf ${{matrix.binary-name}} dist
