@@ -51,6 +51,7 @@ jobs:
       - name: Install venv(windows)
         if: runner.os == 'Windows'
         run: |
+          chcp 65001
           python -m venv ocrenv
           ocrenv\Scripts\activate.ps1
       - name: Install Python Dependencies
