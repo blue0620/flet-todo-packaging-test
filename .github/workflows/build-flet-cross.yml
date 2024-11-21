@@ -1,7 +1,8 @@
 name: build-flet-cross
 on:
   push:
-    branches: [ master ]
+    tags:
+      - "v*"
     
 jobs:
   create-release:
