@@ -1,9 +1,8 @@
 name: build-flet-cross
 on:
   push:
-    tags:
-      - "v*"
-
+    branches: [ master ]
+    
 jobs:
   create-release:
     runs-on: ubuntu-latest
@@ -47,6 +46,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install rich==12.4.4 
       - name: "Install GStreamer libraries"
         if: runner.os == 'Linux'
         run: |
