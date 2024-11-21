@@ -52,7 +52,7 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           python -m venv ocrenv
-          .ocrenv\Scripts\activate        
+          call .\ocrenv\Scripts\activate.bat        
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
