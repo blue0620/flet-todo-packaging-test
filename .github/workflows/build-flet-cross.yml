@@ -15,6 +15,7 @@ jobs:
         run: gh release create ${{github.ref_name}} --draft --verify-tag --notes "Release ${{github.ref_name}}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PYTHONLEGACYWINDOWSSTDIO: "utf-8"
           PYTHONIOENCODING: "UTF-8"
           PYTHONUTF8: 1
   cross-build:
