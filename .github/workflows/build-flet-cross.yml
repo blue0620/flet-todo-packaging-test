@@ -23,9 +23,9 @@ jobs:
     strategy:
       matrix:
         include:
-          # - runs-on: ubuntu-latest
-          #   binary-name: ${{ vars.APP_NAME }}_linux.tar.gz
-          #   target-platform: linux
+          - runs-on: ubuntu-latest
+            binary-name: ${{ vars.APP_NAME }}_linux.tar.gz
+            target-platform: linux
           - runs-on: macos-latest
             binary-name: ${{ vars.APP_NAME }}_macos.tar.gz
             target-platform: macos
